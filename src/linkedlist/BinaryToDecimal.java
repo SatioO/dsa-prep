@@ -32,3 +32,4 @@ public class BinaryToDecimal {
         return head;
     }
 }
+
