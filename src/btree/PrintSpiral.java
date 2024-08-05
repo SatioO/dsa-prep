@@ -12,18 +12,20 @@ public class PrintSpiral {
     }
 
     static void print(TreeNode root) {
-        Deque<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
+        if(root == null) return;
 
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.offerFirst(root);
         boolean reverse = false;
 
-        while (!queue.isEmpty()) {
-            int queueSize = queue.size();
+        while(!queue.isEmpty()) {
+            int size = queue.size();
 
-            for (int i = 0; i < queueSize; i++) {
+            for (int i = 0; i < size; i++) {
                 if(!reverse) {
                     TreeNode node = queue.pollFirst();
                     System.out.println(node.val);
+
                     if(node.left != null) {
                         queue.offerLast(node.left);
                     }
@@ -34,6 +36,7 @@ public class PrintSpiral {
                 } else {
                     TreeNode node = queue.pollLast();
                     System.out.println(node.val);
+
                     if(node.right != null) {
                         queue.offerFirst(node.right);
                     }
